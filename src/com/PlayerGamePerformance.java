@@ -25,7 +25,6 @@ public class PlayerGamePerformance {
         this.player = player;
     }
 
-
     public Integer getAtBats() {
         return atBats;
     }
