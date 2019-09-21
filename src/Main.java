@@ -26,6 +26,8 @@ public class Main {
                 .filter(p -> p.toString().contains("game_"))
                 .collect(Collectors.toList());
 
+
+
         for(Path path: gameFiles) {
             processGame(players, path);
         }
@@ -35,7 +37,10 @@ public class Main {
 	    try {
             List<String> fileContents = Files.readAllLines(path);
 
-            Game game = new Game();
+            String[] gameNumberArray = path.getFileName().toString().split("_");
+            Integer gameNumber = Integer.parseInt(gameNumberArray[gameNumberArray.length-1].replace(".txt", ""));
+
+            Game game = new Game(gameNumber);
             ArrayList<PlayerGamePerformance> playersGamePerformance = new ArrayList<>();
             for (int i = 0; i < fileContents.size(); i++) {
                 //Read innings
@@ -50,14 +55,17 @@ public class Main {
             printGameStats(game, playersGamePerformance);
         }
         catch (IOException error){
-
+            System.out.println(error.toString());
         }
     }
 
 	public static void printGameStats(Game game, ArrayList<PlayerGamePerformance> playersGamePerformance){
         System.out.println("**********************************************");
+        System.out.println(String.format("Game: %-20s", game.getGameId()));
 	    System.out.println("Visitor: " + game.getRunsAway());
         System.out.println("Home: " + game.getRunsHome());
+        System.out.println("----------------------------------------------");
+        System.out.println("Name                    Bat Avg   Slugging");
 
         for(PlayerGamePerformance playerPerformance: playersGamePerformance){
             String output = String.format("%-20s %10.3f %10.3f", playerPerformance.getPlayer().getFirstName() + " " + playerPerformance.getPlayer().getLastName(),
