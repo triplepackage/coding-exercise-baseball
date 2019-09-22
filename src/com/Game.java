@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Inning> innings;
-    private ArrayList<Player> players;
     private Integer gameId;
-
-    public ArrayList<Inning> getInnings() {
-        return innings;
-    }
 
     public  Game(Integer gameId){
         this.gameId = gameId;
+    }
+
+    public ArrayList<Inning> getInnings() {
+        return innings;
     }
 
     public void setInnings(ArrayList<Inning> innings) {

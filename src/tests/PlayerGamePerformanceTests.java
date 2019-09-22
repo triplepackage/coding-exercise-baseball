@@ -1,11 +1,9 @@
 package tests;
 
-
 import com.Player;
 import com.PlayerGamePerformance;
 import org.junit.Assert;
 import org.junit.Test;
-
 
 public class PlayerGamePerformanceTests {
     @Test

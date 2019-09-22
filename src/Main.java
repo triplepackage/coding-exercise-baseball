@@ -26,8 +26,6 @@ public class Main {
                 .filter(p -> p.toString().contains("game_"))
                 .collect(Collectors.toList());
 
-
-
         for(Path path: gameFiles) {
             processGame(players, path);
         }
@@ -80,10 +78,7 @@ public class Main {
         String[]  t = csv.split(",");
 
         for(int j = 0; j < t.length - 1; j = j+2){
-
-            Inning inning;
-
-            inning = new Inning(j/2 + 1, Integer.parseInt(t[j]), Integer.parseInt(t[j + 1]));
+            Inning inning = new Inning(j/2 + 1, Integer.parseInt(t[j]), Integer.parseInt(t[j + 1]));
             innings.add(inning);
         }
 
